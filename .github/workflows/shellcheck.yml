@@ -1,0 +1,22 @@
+name: shellcheck
+
+on:
+  pull_request:
+    paths:
+      - "hooks/**"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: ${{ github.event.pull_request.base.sha }}
+
+      - name: run shellcheck
+        run: |
+          FILES=$(git diff ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} --diff-filter=AM --name-only hooks/)
+          echo "$FILES" | while read -r file ; do
+            shellcheck "$file" || touch error ;
+          done
+          test ! -e error
