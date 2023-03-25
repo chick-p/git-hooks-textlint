@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# shellcheck source=/dev/null
+source "$(dirname "${0}")"/_local-hook-exec
+
+FILES="$(git diff --cached --name-only --diff-filter=ACMR "*.md")"
+[ -z "$FILES" ] && exit 0
+
+echo "===> Check by textlint"
+RET=$?
+if [ $RET -ne 0 ]; then
+  exit 1
+fi
