@@ -10,6 +10,7 @@ This Git hook is `pre-commit` that to assist writing document by using  `core.ho
 * Ask whether to commit or not if a document has word that you should check.
   * use the following rules:
     * [`@textlint-rule/textlint-rule-pattern`](https://github.com/textlint-rule/textlint-rule-pattern)
+    * [`@textlint-ja/textlint-rule-no-synonyms`](https://github.com/textlint-ja/textlint-rule-no-synonyms)
 
 ## Requirement
 
