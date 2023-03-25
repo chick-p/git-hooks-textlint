@@ -20,9 +20,21 @@ fi
 PWD=$(pwd)
 RESULT="$(echo "$FILES" | xargs docker run -v "$PWD":"$PWD" -w "$PWD" --rm $DOCKER_IMANE_NAME textlint)"
 RET=$?
-
 echo "$RESULT"
+
+if [ -z "$RESULT" ]; then
+  exit 0
+fi
+
 if [ $RET -ne 0 ]; then
   echo "textlint failed. Please fix the errors and try again."
+  exit 1
+fi
+
+exec < /dev/tty
+echo "Do you want to commit? [y/N]"
+read -r ANSWER
+if [ "$ANSWER" != "y" ]; then
+  echo "Cancel commit."
   exit 1
 fi
