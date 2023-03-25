@@ -11,6 +11,9 @@
       ],
       "severity": "warning"
     },
+    "@textlint-ja/no-synonyms": {
+      "severity": "warning"
+    },
     "prh": {
       "rulePaths": ["./prh.yml"]
     }
