@@ -1,0 +1,18 @@
+{
+  "plugins": {},
+  "filters": {},
+  "rules": {
+    "@textlint-rule/pattern": {
+      "patterns": [
+        {
+          "message": "「記事」の代わりに「ページ」を使います",
+          "pattern": "/記事/"
+        }
+      ],
+      "severity": "warning"
+    },
+    "prh": {
+      "rulePaths": ["./prh.yml"]
+    }
+  }
+}
