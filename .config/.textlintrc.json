@@ -1,0 +1,18 @@
+{
+  "plugins": {},
+  "filters": {},
+  "rules": {
+    "@textlint-rule/pattern": {
+      "patterns": [
+        {
+          "message": "「場合」と「とき」を併用する場合は、最初の大前提条件に「場合」を、その後に続く小前提条件に「とき」を使用します。",
+          "pattern": "/^(?=.*場合)(?=.*とき).*$/"
+        }
+      ],
+      "severity": "warning"
+    },
+    "prh": {
+      "rulePaths": ["./prh.yml"]
+    }
+  }
+}

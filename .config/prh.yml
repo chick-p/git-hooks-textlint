@@ -1,0 +1,6 @@
+version: 1
+rules:
+  - expected: ページ
+    patterns:
+      - 記事
+    prh: 「記事」の代わりに「ページ」を使います。
