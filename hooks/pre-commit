@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOCKER_IMAGE=chick-p/textlint-precommit
-DOCKER_IMAGE_VERSION=0.1.1
+DOCKER_IMAGE_VERSION=0.1.2
 DOCKER_IMANE_NAME="$DOCKER_IMAGE":"$DOCKER_IMAGE_VERSION"
 
 # shellcheck source=/dev/null
