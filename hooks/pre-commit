@@ -17,15 +17,22 @@ if [ -z "$(docker images -q "$DOCKER_IMANE_NAME")" ]; then
   docker build --force-rm=true -t "$DOCKER_IMANE_NAME" .
 fi
 
+RET=$?
+if [ $RET -ne 0 ]; then
+  echo "Docker build failed! Cancel commit."
+  exit 1
+fi
+
 PWD=$(pwd)
 RESULT="$(echo "$FILES" | xargs docker run -v "$PWD":"$PWD" -w "$PWD" --rm $DOCKER_IMANE_NAME textlint)"
 RET=$?
-echo "$RESULT"
 
 if [ -z "$RESULT" ]; then
+  echo "OK!"
   exit 0
 fi
 
+echo "$RESULT"
 if [ $RET -ne 0 ]; then
   echo "textlint failed. Please fix the errors and try again."
   exit 1
