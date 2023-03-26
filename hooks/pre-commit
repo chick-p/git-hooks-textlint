@@ -24,7 +24,7 @@ if [ $RET -ne 0 ]; then
 fi
 
 PWD=$(pwd)
-RESULT="$(echo "$FILES" | xargs docker run -v "$PWD":"$PWD" -w "$PWD" --rm $DOCKER_IMANE_NAME textlint)"
+RESULT="$(echo "$FILES" | xargs docker run -v "$PWD":"$PWD" -w "$PWD" --rm $DOCKER_IMANE_NAME textlint --config /.textlintrc.json)"
 RET=$?
 
 if [ -z "$RESULT" ]; then
